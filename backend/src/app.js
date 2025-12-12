@@ -3,7 +3,7 @@ const cookieParser = require("cookie-parser")
 const userRoutes = require("./routes/user.routes")
 const chatRoutes = require("../src/routes/chat.routes")
 const cors = require("cors")
-// const path = require("path")    
+const path = require("path")    
 
 
 const app = express()
@@ -18,11 +18,11 @@ app.use(cookieParser())
 
 app.use("/api/auth",userRoutes)
 app.use("/api/chat",chatRoutes)
-// app.use(express.static(path.join(__dirname,"./public")))
+app.use(express.static(path.join(__dirname,"./public")))
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "./public/index.html"))
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./public/index.html"))
+});
 
 
 
